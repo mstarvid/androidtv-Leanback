@@ -167,8 +167,8 @@ public class MovieDetailsFragment extends DetailsFragment {
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
     }
 
-    protected void updateBackground(String uri) {
-        Glide.with(getActivity())
+    private void updateBackground(String uri) {
+        Glide.with(this)
                 .load(uri)
                 .asBitmap()
                 .centerCrop()
@@ -209,6 +209,7 @@ public class MovieDetailsFragment extends DetailsFragment {
                 }
             }
         });
+
         mPresenterSelector = new ClassPresenterSelector();
         mPresenterSelector.addClassPresenter(DetailsOverviewRow.class, detailsPresenter);
         mPresenterSelector.addClassPresenter(ListRow.class, new ListRowPresenter());
@@ -262,12 +263,7 @@ public class MovieDetailsFragment extends DetailsFragment {
 
         final DetailsOverviewRow row = new DetailsOverviewRow(mSelectedMovie);
 
-        int width = Utils.convertDpToPixel(getActivity()
-                .getApplicationContext(), DETAIL_THUMB_WIDTH);
-        int height = Utils.convertDpToPixel(getActivity()
-                .getApplicationContext(), DETAIL_THUMB_HEIGHT);
-
-        Glide.with(getActivity())
+        Glide.with(this)
                 .load(mSelectedMovie.getCardImageUrl())
                 .asBitmap()
                 .dontAnimate()

@@ -72,10 +72,11 @@ public class CardPresenter extends Presenter {
 
     @Override
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
+        if (BuildConfig.DEBUG) Log.d(TAG, "onBindViewHolder");
+
         Movie movie = (Movie) item;
         ImageCardView cardView = (ImageCardView) viewHolder.view;
 
-        if (BuildConfig.DEBUG) Log.d(TAG, "onBindViewHolder");
         if (movie.getCardImageUrl() != null) {
             cardView.setTitleText(movie.getTitle());
             cardView.setContentText(movie.getStudio());
@@ -90,6 +91,7 @@ public class CardPresenter extends Presenter {
     @Override
     public void onUnbindViewHolder(Presenter.ViewHolder viewHolder) {
         if (BuildConfig.DEBUG) Log.d(TAG, "onUnbindViewHolder");
+
         ImageCardView cardView = (ImageCardView) viewHolder.view;
         // Remove references to images so that the garbage collector can free up memory
         cardView.setBadgeImage(null);

@@ -171,8 +171,12 @@ public class VideoProvider {
                                 video.getString(TAG_CARD_THUMB));
                         studio = video.getString(TAG_STUDIO);
 
-                        movie = buildMovieInfo(categoryName, title, description, studio,
-                                videoUrl, cardImageUrl, bgImageUrl);
+                        // Create Movie object.
+                        movie = buildMovieInfo(categoryName, title.replace("_", " -"),
+                                description, studio, videoUrl, cardImageUrl, bgImageUrl);
+
+                        // Add it to the list.
+
                         sMovieListById.put(movie.getId(), movie);
                         categoryList.add(movie);
                     }

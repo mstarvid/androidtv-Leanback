@@ -218,7 +218,7 @@ public class MainFragment extends BrowseFragment implements
     protected void updateBackground(String uri) {
         int width = mMetrics.widthPixels;
         int height = mMetrics.heightPixels;
-        Glide.with(getActivity())
+        Glide.with(this)
                 .load(uri)
                 .asBitmap()
                 .centerCrop()

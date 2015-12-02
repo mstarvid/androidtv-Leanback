@@ -353,8 +353,8 @@ public class PlaybackOverlayFragment extends android.support.v17.leanback.app.Pl
         }
     }
 
-    protected void updateVideoImage(String uri) {
-        Glide.with(getActivity())
+    private void updateVideoImage(String uri) {
+        Glide.with(this)
                 .load(uri)
                 .centerCrop()
                 .into(new SimpleTarget<GlideDrawable>(CARD_WIDTH, CARD_HEIGHT) {
